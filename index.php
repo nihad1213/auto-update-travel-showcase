@@ -9,7 +9,6 @@
 <body>
     <header><h1>Automatic Image List</h1></header>
     <main><pre><?php 
-        var_dump(pathinfo('index.php'));
         $handle = opendir(__DIR__ . '/images');
         
         while (($currentFile = readdir($handle)) !== false)
@@ -19,8 +18,13 @@
             {
                 continue;
             }
-
+            
+            $extension = pathinfo('images/' . $currentFile, PATHINFO_EXTENSION);
+            if (!in_array(strtolower($extension), ['jpg', 'jpeg', 'png'])) {
+                continue;
+            }
             var_dump($currentFile);
+            var_dump($extension);
             $images[] = $currentFile;
         }
 
