@@ -31,7 +31,6 @@
             }
 
             $title = '';
-
             $content = [];
 
             $fileWithoutExt = pathinfo($currentFile, PATHINFO_FILENAME);
